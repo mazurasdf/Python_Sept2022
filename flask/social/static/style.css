@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.post{
+    border: 2px solid black;
+    width:50%;
+    padding: 10px;
+    background-color: rosybrown;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.post > div{
+    width: 75%;
+}

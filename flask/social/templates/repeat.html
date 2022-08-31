@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repeat</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+    {% if times > 100 %}
+        <h1>woooooaaaah there partner! that's too many! 🤠</h1>
+    {% elif times > 50 %}
+        <h1>still too many!......partner</h1>
+    {% else %}
+        {% for i in range(times) %}
+            <h1>{{phrase}}</h1>
+        {% endfor %}
+    {% endif %}
+
+    <h1>end of for loop</h1>
+</body>
+</html>
