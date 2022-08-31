@@ -2,3 +2,5 @@ exams/
 assignments/
 full_stack/
 **/node_modules/
+**/__pycache__
+**/.vscode/*
