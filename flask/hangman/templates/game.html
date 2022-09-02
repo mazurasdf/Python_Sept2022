@@ -10,22 +10,35 @@
     <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
 </head>
 <body>
+    <a href="/reset" class="btn btn-danger position-absolute top-0 end-0">reset</a>
+
     <h1 class="text-center m-3">incorrect: {{session["incorrect"]}}</h1>
 
-    {% if session["progress"] == session["answer"] %}
+    {% if session["progress"]|upper == session["answer"]|upper %}
         <img class="d-block mx-auto" src="{{url_for('static',filename='img/win.png')}}" alt="game progress">
     {% else %}
         <img class="d-block mx-auto" src="{{url_for('static',filename='img/'+ session['incorrect']|length|string +'.png')}}" alt="game progress">
     {% endif %}
 
-    <h1 class="text-center m-3">progress: <span>{{session["progress"]}}</span></h1>
+    {% if session["incorrect"]|length == 6 %}
+        <h1 class="text-center m-3">too bad! the answer was: <span>{{session["answer"]}}</span></h1>
+    {% else %}
+        <h1 class="text-center m-3">progress: <span>{{session["progress"]}}</span></h1>
+    {% endif %}
 
     <form class="w-25 mx-auto d-block my-3 p-3 border" method="post" action="/submit_guess">
         <h2 class="text-center">Enter guess here:</h2>
-        <div class="mb-3">
-            <input type="text" class="form-control" name="guess" maxlength="1">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        {% if session["incorrect"]|length == 6 %}
+            <div class="mb-3">
+                <input type="text" class="form-control" name="guess" maxlength="1" disabled>
+            </div>
+            <button type="submit" class="btn btn-primary d-block mx-auto" disabled>Submit</button>
+        {% else %}
+            <div class="mb-3">
+                <input type="text" class="form-control" name="guess" maxlength="1" autofocus>
+            </div>
+            <button type="submit" class="btn btn-primary d-block mx-auto">Submit</button>
+        {% endif %}
     </form>
 </body>
 </html>

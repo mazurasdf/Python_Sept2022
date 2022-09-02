@@ -15,3 +15,7 @@ img{
 span{
     letter-spacing: 3px;
 }
+
+form{
+    background-color: rgba(255, 99, 104, 0.479);
+}
